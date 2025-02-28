@@ -9,6 +9,8 @@ affiliations:
     National University of Defense Technology<sup>1</sup>, Sony<sup>2</sup>, Nanyang Technological University<sup>3</sup>
 
 code: https://github.com/Zhong-Zhengyi/FUSED-Code
+paper: https://github.com/Zhong-Zhengyi/FUSED-Code
+data: https://github.com/Zhong-Zhengyi/FUSED-Code
 ---
 <!-- Using HTML to center the abstract -->
 
@@ -46,9 +48,7 @@ directly using techniques such as gradient ascent, knowledge distillation, and s
 - Significant unlearning costs: The retraining-based method requires multiple iterations, resulting in significant computational and communication costs. Even simple adjustments to model parameters can demand a significant amount of storage as a compensatory cost.
 
 <strong>Method</strong>. To address these challenges, we propose a reversible Federated Unlearning method via SElective sparse
-aDapter (FUSED). To begin, we perform a layer-wise anal-
-ysis of the model’s sensitivity to knowledge changes, iden-
-tifying the layers that are most affected. These sensitive
+aDapter (FUSED). To begin, we perform a layer-wise analysis of the model’s sensitivity to knowledge changes, identifying the layers that are most affected. These sensitive
 layers are then processed into sparse structures known as
 unlearning adapters. This process, termed Critical Layer
 Identification (CLI), significantly reduces the number of

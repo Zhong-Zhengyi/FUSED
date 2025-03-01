@@ -2,7 +2,7 @@
 layout: project_page
 permalink: /
 
-title: EUnlearning through Knowledge Overwriting- Reversible Federated Unlearning via Selective Sparse Adapter
+title: Unlearning through Knowledge Overwriting&#58 Reversible Federated Unlearning via Selective Sparse Adapter
 authors:
     Zhengyi Zhong<sup>1</sup>, Weidong Bao<sup>1</sup>, Ji Wang<sup>1</sup>, Shuai Zhang<sup>1</sup>, Jingxuan Zhou<sup>1</sup>, Lingjuan Lyu<sup>2</sup>, Wei Yang Bryan Lim<sup>3</sup>
 affiliations:
@@ -54,10 +54,6 @@ model parameters, thereby lowering unlearning costs. Subsequently, the unlearnin
 - We introduce the CLI method which accurately identifies the model layers sensitive to knowledge changes and constructs sparse unlearning adapters, resulting in a significant reduction in parameter scale and lowering unlearning costs.
 - We theoretically and experimentally prove the effectiveness of the proposed method across different unlearning scenarios in FL, including client unlearning, class unlearning, and sample unlearning.
 
-
-
-  
-
 ## Problem formulation
 **Centralized machine unlearning.** We denote $\mathcal{D}^{u}$ as the data
 to be forgotten, and $\mathcal{D}$ as the entire training dataset,
@@ -76,10 +72,11 @@ $\mathcal{D}^{r}$, and (c) minimizing the resources consumed by the
 unlearning process. Denoting $\mathcal{F (\cdot)}$ as the model test
 loss and $\mathcal{RC (\cdot)}$ as resource consumption, the above
 objectives can be respectively expressed as:
+{% raw %}
 $$\max {\mathcal{F}}({{\mathcal{M}}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^u},$$
 $$\min {\mathcal{F}}({\mathcal{M}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^r =  \mathcal{D}\backslash {\mathcal{D}^u}},$$
 $$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, \mathcal{D}^r, \mathcal{D}^u)).$$
-
+{% endraw %}
 Ideally, when a model is considered to have fully forgotten target
 knowledge, its performance should be equivalent to that of a model
 trained from scratch without ever seeing the forgotten data
@@ -102,10 +99,11 @@ $\mathcal{D}^{u}= \{\mathcal{D}_k\}_{k\in{N_u}}$, and remember dataset
 $\mathcal{D}^{r}= \{\mathcal{D}_k\}_{k\in{N\backslash{N_u}}}$, where
 $\mathcal{D}_k$ represents the data of client $k$. The optimization
 objectives are:
+{% raw %}
 $$\max \sum\limits_{k \in {N_u}} {{\mathcal{F}}({\mathcal{M}^f},{\mathcal{D}_k})},$$
 $$\min \sum\limits_{k \in N\backslash {N_u}} {{\mathcal{F}}({\mathcal{M}^r},{\mathcal{D}_k})},$$
 $$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, \{\mathcal{D}_k \}_{k \in N}).$$
-
+{% endraw %}
 Sample unlearning means forgetting a portion of data within a client. It
 is similar to client unlearning. In the context of class unlearning, let
 all client data classes be $\mathcal{C}$ and the classes to be unlearned
@@ -149,7 +147,7 @@ identical model structure. After local training, the parameters of these
 models differ across clients. Let $p_l^n$ represent the parameters of
 the $l$-th layer of the $n$-th client, where $n = 1,2, \cdots ,N$ and
 $l = 1,2, \cdots ,L$. The initial distributed global model is denoted as
-{% raw %}$\mathcal{M}^r = \left\{ {{p_1},{p_2}, \cdots ,{p_L}} \right\}${% endraw %}. After
+$\mathcal{M}^r = \{ { {p_1},{p_2}, \cdots ,{p_L} } \}$. After
 local training by the clients, the variation in the $l$-th layer of the
 model can be expressed as:
 $$
@@ -192,8 +190,8 @@ the parameters in a random manner and leave only a small portion,
 forming a sparse parameter matrix ${A^f}$. During training, only ${A^f}$
 is trained while $\mathcal{L}^f$ remains unchanged. In the inference
 process, the new parameters of the unlearning layer are directly
-obtained by adding the parameters of ${A^f}$ (denoted by ${p_{{A^f}}}$)
-and $\mathcal{L}^f$ (denoted by ${p_{{{\mathcal{L}}^f}}}$).
+obtained by adding the parameters of ${A^f}$ (denoted by {% raw %}${p_{A^f}}${% endraw %})
+and $\mathcal{L}^f$ (denoted by {% raw %}${p_{{{\mathcal{L}}^f}}}${% endraw %}).
 
 For the original model $\mathcal{M}^r$, the entire unlearning process
 can be divided into four stages: model distribution, local training,
@@ -211,15 +209,15 @@ in the local training stage, for a client $n$, assuming the total number
 of local training epochs per federated iteration is $E$, then in the
 $t$-th federated iteration, the parameters of the model
 $\mathcal{M}_n(i,e)$ are
-$({p_{A_n^f(i,e)}} + {p_{{{\mathcal{L}}^f}}}) \circ {p_{{{\mathcal{L}}^r}}}$.
+{% raw %}
+$({p_{A_n^f(i,e)}} + {p_{{{\mathcal{L}}^f}}}) \circ {p_{{{\mathcal{L}}^r}}}${% endraw %}.
 The training process is as follows:
 {% raw %}
 $$A_n^f(i,e + 1) = A_n^f(i,e) - \eta \nabla {F_n}(D_n^r,{{\cal M}_n}(i,e)),$$
 $${{\mathcal{M}}_n}(i,e + 1) = ({p_{A_n^f(i,e + 1)}} + {p_{{{\cal L}_f}}}) \circ {p_{{{\cal L}_r}}},
 $$
 {% endraw %}
-where $e = 0, \cdots E - 1$,
-${F_n}(D_n^r,{\mathcal{M}_n}(i,e))$ represents the loss and $\eta$
+where $e = 0, \cdots E - 1$,${F_n}(D_n^r,{\mathcal{M}_n}(i,e))$ represents the loss and $\eta$
 denotes the learning rate. In each round of local training,
 $\mathcal{M}_n(i,e)$ is derived from the fusion of the original model
 $\mathcal{M}^r$ and the sparse matrix $A_n^f(i,e)$ obtained from the
@@ -227,14 +225,10 @@ previous round. Each completed training round corresponds to a process
 of knowledge overwriting, during which the remaining knowledge is
 progressively enhanced. It is worth noting that during the training
 process, only ${p_{A_n^f(i,e)}}$ is updated. The other parameters,
-${p_{{{\mathcal{L}}^f}}}$ and ${p_{{{\mathcal{L}}^r}}}$, remain frozen
+{% raw %}${p_{{{\mathcal{L}}^f}}}${% endraw %} and {% raw %}${p_{{{\mathcal{L}}^r}}}${% endraw %}, remain frozen
 and are only used to compute the loss during inference. After local
 training is completed, each client uploads ${p_{A_n^f(I, E)}}$ to the
 server, which aggregates the updates using the FedAvg method to obtain a new ${p_{A_n^f(i+1)}}$. After training, we need to concatenate the adapter with the corresponding unlearning layer of the original model to derive the global unlearning model. When the client's knowledge no longer needs to be unlearned, removing the unlearning adapters will effectively restore the original memory, thereby making the unlearning process reversible.
-
-
-
-
 
 
 ## Experiment

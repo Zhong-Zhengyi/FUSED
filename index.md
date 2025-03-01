@@ -112,7 +112,7 @@ all client data classes be $\mathcal{C}$ and the classes to be unlearned
 be $\mathcal{C}^u$. The unlearning dataset can be represented as
 ${\mathcal{D}^u} = \{ ( {x_i^k,y_i^k = c} ) \}_{c \in {\mathcal{C}^u},( {x_i^k,y_i^k} ) \in {\mathcal{D}_k},k \in N}$,
 and the remember dataset as
-${\mathcal{D}^r} = {\{ {{\mathcal{D}_k}} \}_{k \in N}}\backslash {\mathcal{D}^u}$.
+${\mathcal{D}^r} = {\{ {\mathcal{D}_k} \}_{k \in N}}\backslash {\mathcal{D}^u}$.
 The optimization objectives are:
 
 $$\max \sum\limits_{({x_i^{.},y_i^{.}}) \in \{ {\mathcal{D}_k} \}_{k \in N}} {\mathcal{F}({\mathcal{M}^f},{{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.} \in {\mathcal{C}^u}}})},$$

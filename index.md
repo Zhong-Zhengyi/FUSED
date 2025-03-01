@@ -213,10 +213,12 @@ $t$-th federated iteration, the parameters of the model
 $\mathcal{M}_n(i,e)$ are
 $({p_{A_n^f(i,e)}} + {p_{{{\mathcal{L}}^f}}}) \circ {p_{{{\mathcal{L}}^r}}}$.
 The training process is as follows:
+{% raw %}
 $$A_n^f(i,e + 1) = A_n^f(i,e) - \eta \nabla {F_n}(D_n^r,{{\cal M}_n}(i,e)),$$
-
 $${{\mathcal{M}}_n}(i,e + 1) = ({p_{A_n^f(i,e + 1)}} + {p_{{{\cal L}_f}}}) \circ {p_{{{\cal L}_r}}},
-$$ where $e = 0, \cdots E - 1$,
+$$
+{% endraw %}
+where $e = 0, \cdots E - 1$,
 ${F_n}(D_n^r,{\mathcal{M}_n}(i,e))$ represents the loss and $\eta$
 denotes the learning rate. In each round of local training,
 $\mathcal{M}_n(i,e)$ is derived from the fusion of the original model

@@ -114,12 +114,11 @@ ${\mathcal{D}^u} = \{ ( {x_i^k,y_i^k = c} ) \}_{c \in {\mathcal{C}^u},( {x_i^k,y
 and the remember dataset as
 ${\mathcal{D}^r} = {\{ {\mathcal{D}_k} \}_{k \in N}}\backslash {\mathcal{D}^u}$.
 The optimization objectives are:
-
+{% raw %}
 $$\max \sum\limits_{({x_i^{.},y_i^{.}}) \in \{ {\mathcal{D}_k} \}_{k \in N}} {\mathcal{F}({\mathcal{M}^f},{{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.} \in {\mathcal{C}^u}}})},$$
 $$\min \sum\limits_{({x_i^{.},y_i^{.}}) \in \{ {\mathcal{D}_k}\}_{k \in N} } {\mathcal{F}({\mathcal{M}^r},{{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.} \notin {\mathcal{C}^u}}})},$$
 $$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, {{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.}\in \mathcal{C}}})).$$
-
-
+{% endraw %}
 
 
 ## Methodology

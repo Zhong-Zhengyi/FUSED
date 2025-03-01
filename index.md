@@ -152,8 +152,9 @@ $l = 1,2, \cdots ,L$. The initial distributed global model is denoted as
 {% raw %}$\mathcal{M}^r = \left\{ {{p_1},{p_2}, \cdots ,{p_L}} \right\}${% endraw %}. After
 local training by the clients, the variation in the $l$-th layer of the
 model can be expressed as:
-$$Diff_l = Diff_l^1(p_l^1,{p_l}) \oplus  \cdots  \oplus Diff_l^N(p_l^N,{p_l}),
-    $$ where $Diff_l^n(p_l^n,{p_l})$ represents the
+$$
+Diff_l = Diff_l^1(p_l^1,{p_l}) \oplus  \cdots  \oplus Diff_l^N(p_l^N,{p_l}),
+$$ where $Diff_l^n(p_l^n,{p_l})$ represents the
 difference between the $l$-th layer of the $n$-th client's model and the
 $l$-th layer of the original model (need to be forgotten) distributed by
 the server. We utilize the Manhattan distance for measurement. Assuming
@@ -163,10 +164,15 @@ calculation process is as follows:
 $${\cal D}iff(p_l^n,{p_l}) = \sum\nolimits_{i = 1}^k {\sum\nolimits_{j = 1}^v {\left| {p_{l,ij}^n - {p_{l,ij}}} \right|} }.
 $$
 {% endraw %}
-The aggregation method of $\oplus$ is as follows: $$\begin{array}{l}
+The aggregation method of $\oplus$ is as follows: 
+{% raw %}
+$$\begin{array}{l}
 Diff_l^1(p_l^1,{p_l}) \oplus {\cal D}iff_l^N(p_l^N,{p_l})= \frac{{\left| {{D_1}} \right|}}{{\sum\nolimits_{n = 1}^N {\left| {{D_n}} \right|} }}\\
  Diff_l^1(p_l^1,{p_l}) + \frac{{\left| {{D_1}} \right|}}{{\sum\nolimits_{n = 1}^N {\left| {{D_n}} \right|} }}{\cal D}iff_l^N(p_l^N,{p_l}),
-\end{array}$$ where $\left|D_i\right|$ represents the data volume of
+\end{array}$$
+{% endraw %}
+
+where $\left|D_i\right|$ represents the data volume of
 client $i$. Eventually,
 $LS = \left[ {\mathop {\arg \max }\limits_l \{ Diff_l\} , \cdots ,\mathop {\arg \min }\limits_l \{ Diff_l\} } \right]$
 indicating the changes in different model layers is obtained. The first

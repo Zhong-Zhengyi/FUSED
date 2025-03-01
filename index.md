@@ -4,17 +4,9 @@ permalink: /
 
 title: EUnlearning through Knowledge Overwriting: Reversible Federated Unlearning via Selective Sparse Adapter
 authors:
-  - Zhengyi Zhong<sup>1</sup>
-  - Weidong Bao<sup>1</sup>
-  - Ji Wang<sup>1</sup>
-  - Shuai Zhang<sup>1</sup>
-  - Jingxuan Zhou<sup>1</sup>
-  - Lingjuan Lyu<sup>2</sup>
-  - Wei Yang Bryan Lim<sup>3</sup>
+    Zhengyi Zhong<sup>1</sup>, Weidong Bao<sup>1</sup>, Ji Wang<sup>1</sup>, Shuai Zhang<sup>1</sup>, Jingxuan Zhou<sup>1</sup>, Lingjuan Lyu<sup>2</sup>, Wei Yang Bryan Lim<sup>3</sup>
 affiliations:
-  - National University of Defense Technology<sup>1</sup>
-  - Sony<sup>2</sup>
-  - Nanyang Technological University<sup>3</sup>
+    National University of Defense Technology<sup>1</sup>, Sony<sup>2</sup>, Nanyang Technological University<sup>3</sup>
 
 code: https://github.com/Zhong-Zhengyi/FUSED-Code
 ---
@@ -34,11 +26,9 @@ code: https://github.com/Zhong-Zhengyi/FUSED-Code
 as a promising paradigm for privacy-preserving collaborative model training. In practice, FL models need to acquire
 new knowledge continuously while also ensuring the “right  to be forgotten” for previously used training data.
 For example, a year after the launch of ChatGPT, The New
-York Times accused OpenAI and Microsoft of the unau-
-thorized use of its media data for training, demanding that
+York Times accused OpenAI and Microsoft of the unauthorized use of its media data for training, demanding that
 they delete the acquired knowledge from its models.
-Furthermore, malicious clients may inject harmful data dur-
-ing training, potentially poisoning the global model. As a
+Furthermore, malicious clients may inject harmful data during training, potentially poisoning the global model. As a
 result, it is crucial for the global model to eliminate such
 harmful knowledge. This leads to the concept of <strong>Federated
 Unlearning(FU)</strong>.
@@ -55,27 +45,13 @@ directly using techniques such as gradient ascent, knowledge distillation, and s
 
 <strong>Method</strong>. To address these challenges, we propose a reversible Federated Unlearning method via SElective sparse
 aDapter (FUSED). To begin, we perform a layer-wise analysis of the model’s sensitivity to knowledge changes, identifying the layers that are most affected. These sensitive
-layers are then processed into sparse structures known as
-unlearning adapters. This process, termed Critical Layer
-Identification (CLI), significantly reduces the number of
-model parameters, thereby lowering unlearning costs. Subsequently, the unlearning adapters are distributed to clients
-that do not require unlearning for retraining. During this
-phase, the original model is frozen, and only the independent unlearning adapters are trained. Ultimately, the unlearning adapters are integrated with the original model to
-yield a global unlearning model. This method leverages
-training on the remaining knowledge to effectively overwrite the knowledge that needs to be forgotten, addressing
-the issue of indiscriminate unlearning. Moreover, the introduction of independent adapters facilitates rapid recovery
-of forgotten knowledge through their removal and significantly reduces unlearning costs by utilizing sparse parameters. In summary,FUSEDachieves high performance, reversibility, and cost-efficiency in FU, making it suitable for
-scenarios involving client unlearning, class unlearning, and
-sample unlearning scenarios.
+layers are then processed into sparse structures known as unlearning adapters. This process, termed Critical Layer Identification (CLI), significantly reduces the number of
+model parameters, thereby lowering unlearning costs. Subsequently, the unlearning adapters are distributed to clients that do not require unlearning for retraining. During this phase, the original model is frozen, and only the independent unlearning adapters are trained. Ultimately, the unlearning adapters are integrated with the original model to yield a global unlearning model. This method leverages training on the remaining knowledge to effectively overwrite the knowledge that needs to be forgotten, addressing the issue of indiscriminate unlearning. Moreover, the introduction of independent adapters facilitates rapid recovery of forgotten knowledge through their removal and significantly reduces unlearning costs by utilizing sparse parameters. In summary,FUSEDachieves high performance, reversibility, and cost-efficiency in FU, making it suitable for scenarios involving client unlearning, class unlearning, and sample unlearning scenarios.
 
 <strong>Contributions</strong>. The contributions are as follows:
 
-- We propose FUSED, a reversible FU approach that
-    retrains independent sparse adapters for unlearning.
-    These adapters effectively mitigate unlearning interference while ensuring that the unlearning is reversible.
-- We introduce the CLI method which accurately identifies
-    the model layers sensitive to knowledge changes and constructs sparse unlearning adapters, resulting in a significant reduction in parameter scale and lowering unlearning
-    costs.
+- We propose FUSED, a reversible FU approach that retrains independent sparse adapters for unlearning. These adapters effectively mitigate unlearning interference while ensuring that the unlearning is reversible.
+- We introduce the CLI method which accurately identifies the model layers sensitive to knowledge changes and constructs sparse unlearning adapters, resulting in a significant reduction in parameter scale and lowering unlearning costs.
 - We theoretically and experimentally prove the effectiveness of the proposed method across different unlearning scenarios in FL, including client unlearning, class unlearning, and sample unlearning.
 
 
@@ -156,7 +132,7 @@ layers identified.
 *![The figure illustrates the process of CLI (left) and unlearning
 (right). Left: the server computes the difference of each layer between
 the models uploaded by each client and the distributed one, identifying
- is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.jpg)*
+ is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.pdf)*
 
 ### Critical layer identification
 
@@ -316,8 +292,8 @@ model demonstrate heightened sensitivity to data variations across
 clients. Therefore, these layers will be designated as unlearning layers
 for sparse training in the subsequent unlearning process.
 
-![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.jpg)
-![Fig.3. Transformer.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_transformer.jpg)
+![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.pdf)
+![Fig.3. Transformer.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_transformer.pdf)
 
 In fact, with the increasing number of federated iterations, the global
 model's knowledge generalization ability improves, leading to a gradual
@@ -408,7 +384,7 @@ comparable level. This indicates that CLI can more accurately identify
 the model layers that are more sensitive to knowledge, thereby enhancing
 the unlearning effect.
 
-![Fig.4. blation study of CLI.](/static/image/cifar10.jpg)
+![Fig.4. blation study of CLI.](/static/image/cifar10.pdf)
 
 
 

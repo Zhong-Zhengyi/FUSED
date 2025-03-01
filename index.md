@@ -131,7 +131,7 @@ layers identified.
 *![The figure illustrates the process of CLI (left) and unlearning
 (right). Left: the server computes the difference of each layer between
 the models uploaded by each client and the distributed one, identifying
- is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.pdf)*
+ is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.jpg)*
 
 ### Critical layer identification
 
@@ -300,7 +300,7 @@ model demonstrate heightened sensitivity to data variations across
 clients. Therefore, these layers will be designated as unlearning layers
 for sparse training in the subsequent unlearning process.
 
-![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.pdf)
+![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.jpg)
 ![Fig.3. Transformer.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_transformer.pdf)
 
 In fact, with the increasing number of federated iterations, the global
@@ -392,7 +392,7 @@ comparable level. This indicates that CLI can more accurately identify
 the model layers that are more sensitive to knowledge, thereby enhancing
 the unlearning effect.
 
-![Fig.4. blation study of CLI.](/static/image/cifar10.pdf)
+![Fig.4. blation study of CLI.](/static/image/cifar10.jpg)
 
 
 

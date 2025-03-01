@@ -2,7 +2,7 @@
 layout: project_page
 permalink: /
 
-title: EUnlearning through Knowledge Overwriting: Reversible Federated Unlearning via Selective Sparse Adapter
+title: EUnlearning through Knowledge Overwriting- Reversible Federated Unlearning via Selective Sparse Adapter
 authors:
     Zhengyi Zhong<sup>1</sup>, Weidong Bao<sup>1</sup>, Ji Wang<sup>1</sup>, Shuai Zhang<sup>1</sup>, Jingxuan Zhou<sup>1</sup>, Lingjuan Lyu<sup>2</sup>, Wei Yang Bryan Lim<sup>3</sup>
 affiliations:
@@ -131,7 +131,7 @@ layers identified.
 *![The figure illustrates the process of CLI (left) and unlearning
 (right). Left: the server computes the difference of each layer between
 the models uploaded by each client and the distributed one, identifying
- is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.jpg)*
+ is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.pdf)*
 
 ### Critical layer identification
 
@@ -300,7 +300,7 @@ model demonstrate heightened sensitivity to data variations across
 clients. Therefore, these layers will be designated as unlearning layers
 for sparse training in the subsequent unlearning process.
 
-![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.jpg)
+![Fig.2. Resnet18.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_resnet.pdf)
 ![Fig.3. Transformer.The average difference between local models and the server model across different models.](/static/image/param_change_cifar10_distri_0.1_model_transformer.pdf)
 
 In fact, with the increasing number of federated iterations, the global
@@ -392,7 +392,7 @@ comparable level. This indicates that CLI can more accurately identify
 the model layers that are more sensitive to knowledge, thereby enhancing
 the unlearning effect.
 
-![Fig.4. blation study of CLI.](/static/image/cifar10.jpg)
+![Fig.4. blation study of CLI.](/static/image/cifar10.pdf)
 
 
 

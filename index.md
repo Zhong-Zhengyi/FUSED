@@ -159,9 +159,10 @@ $l$-th layer of the original model (need to be forgotten) distributed by
 the server. We utilize the Manhattan distance for measurement. Assuming
 that the dimensions of $p_l^n$ and $p_l$ are $k \times v$. The
 calculation process is as follows:
+{% raw %}
 $${\cal D}iff(p_l^n,{p_l}) = \sum\nolimits_{i = 1}^k {\sum\nolimits_{j = 1}^v {\left| {p_{l,ij}^n - {p_{l,ij}}} \right|} }.
 $$
-
+{% endraw %}
 The aggregation method of $\oplus$ is as follows: $$\begin{array}{l}
 Diff_l^1(p_l^1,{p_l}) \oplus {\cal D}iff_l^N(p_l^N,{p_l})= \frac{{\left| {{D_1}} \right|}}{{\sum\nolimits_{n = 1}^N {\left| {{D_n}} \right|} }}\\
  Diff_l^1(p_l^1,{p_l}) + \frac{{\left| {{D_1}} \right|}}{{\sum\nolimits_{n = 1}^N {\left| {{D_n}} \right|} }}{\cal D}iff_l^N(p_l^N,{p_l}),

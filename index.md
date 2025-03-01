@@ -149,7 +149,7 @@ identical model structure. After local training, the parameters of these
 models differ across clients. Let $p_l^n$ represent the parameters of
 the $l$-th layer of the $n$-th client, where $n = 1,2, \cdots ,N$ and
 $l = 1,2, \cdots ,L$. The initial distributed global model is denoted as
-$\mathcal{M}^r = \left\{ {{p_1},{p_2}, \cdots ,{p_L}} \right\}$. After
+{% raw %}$\mathcal{M}^r = \left\{ {{p_1},{p_2}, \cdots ,{p_L}} \right\}${% endraw %}. After
 local training by the clients, the variation in the $l$-th layer of the
 model can be expressed as:
 $$Diff_l = Diff_l^1(p_l^1,{p_l}) \oplus  \cdots  \oplus Diff_l^N(p_l^N,{p_l}),

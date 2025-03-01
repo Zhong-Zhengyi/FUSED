@@ -76,8 +76,8 @@ $\mathcal{D}^{r}$, and (c) minimizing the resources consumed by the
 unlearning process. Denoting $\mathcal{F (\cdot)}$ as the model test
 loss and $\mathcal{RC (\cdot)}$ as resource consumption, the above
 objectives can be respectively expressed as:
-$$\max {\mathcal{F}}({{\mathcal{M}}^f},({x_i},{y_i})),( {{x_i},{y_i}} ) \in {\mathcal{D}^u},$$
-$$\min {\mathcal{F}}({\mathcal{M}^f},({x_i},{y_i})),( {{x_i},{y_i}} ) \in {\mathcal{D}^r =  \mathcal{D}\backslash {\mathcal{D}^u}},$$
+$$\max {\mathcal{F}}({{\mathcal{M}}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^u},$$
+$$\min {\mathcal{F}}({\mathcal{M}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^r =  \mathcal{D}\backslash {\mathcal{D}^u}},$$
 $$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, \mathcal{D}^r, \mathcal{D}^u)).$$
 
 Ideally, when a model is considered to have fully forgotten target

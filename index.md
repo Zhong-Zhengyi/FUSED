@@ -4,7 +4,7 @@ permalink: /
 
 title: Unlearning through Knowledge Overwriting&#58 Reversible Federated Unlearning via Selective Sparse Adapter
 authors:
-    Zhengyi Zhong<sup>1</sup>, Weidong Bao<sup>1</sup>, Ji Wang<sup>1</sup>, Shuai Zhang<sup>1</sup>, Jingxuan Zhou<sup>1</sup>, Lingjuan Lyu<sup>2</sup>, Wei Yang Bryan Lim<sup>3</sup>
+    Zhengyi Zhong<sup>1,3</sup>, Weidong Bao<sup>1</sup>, Ji Wang<sup>1</sup>, Shuai Zhang<sup>1</sup>, Jingxuan Zhou<sup>1</sup>, Lingjuan Lyu<sup>2</sup>, Wei Yang Bryan Lim<sup>3</sup>
 affiliations:
     National University of Defense Technology<sup>1</sup>, Sony<sup>2</sup>, Nanyang Technological University<sup>3</sup>
 

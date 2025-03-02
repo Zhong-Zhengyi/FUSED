@@ -61,10 +61,10 @@ The first stage is Critical Layer Identification (CLI), and the second
 stage is Unlearning via Sparse Adapters, which is based on the critical
 layers identified.
 
-*![The figure illustrates the process of CLI (left) and unlearning
+![The figure illustrates the process of CLI (left) and unlearning
 (right). Left: the server computes the difference of each layer between
 the models uploaded by each client and the distributed one, identifying
- is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.jpg)*
+ is constructed for each key layer, which is then independently trained on the remaining data.](/static/image/method.jpg)
 
 ### Critical layer identification
 

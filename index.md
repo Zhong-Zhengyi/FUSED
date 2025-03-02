@@ -9,6 +9,7 @@ affiliations:
     National University of Defense Technology<sup>1</sup>, Sony<sup>2</sup>, Nanyang Technological University<sup>3</sup>
 
 code: https://github.com/Zhong-Zhengyi/FUSED-Code
+paper: https://openreview.net/forum?id=3EUHkKkzzj
 ---
 <!-- Using HTML to center the abstract -->
 
@@ -146,7 +147,7 @@ $({p_{A_n^f(i,e)}} + {p_{{{\mathcal{L}}^f}}}) \circ {p_{{{\mathcal{L}}^r}}}${% e
 The training process is as follows:
 {% raw %}
 $$A_n^f(i,e + 1) = A_n^f(i,e) - \eta \nabla {F_n}(D_n^r,{{\cal M}_n}(i,e)),$$
-$${{\mathcal{M}}_n}(i,e + 1) = ({p_{A_n^f(i,e + 1)}} + {p_{{{\cal L}_f}}}) \circ {p_{{{\cal L}_r}}},
+$${{\mathcal{M}}_n}(i,e + 1) = ({p_{A_n^f(i,e + 1)}} + {p_{{{\cal L}_f}}}) \circ {p_{{{\cal L}_r}}}.
 $$
 {% endraw %}
 

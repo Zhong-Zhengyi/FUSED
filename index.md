@@ -54,71 +54,6 @@ model parameters, thereby lowering unlearning costs. Subsequently, the unlearnin
 - We introduce the CLI method which accurately identifies the model layers sensitive to knowledge changes and constructs sparse unlearning adapters, resulting in a significant reduction in parameter scale and lowering unlearning costs.
 - We theoretically and experimentally prove the effectiveness of the proposed method across different unlearning scenarios in FL, including client unlearning, class unlearning, and sample unlearning.
 
-## Problem formulation
-**Centralized machine unlearning.** We denote $\mathcal{D}^{u}$ as the data
-to be forgotten, and $\mathcal{D}$ as the entire training dataset,
-$\mathcal{D}=({x_i},{y_i} )_{i = 1}^n$. Then,
-$\mathcal{D}^r = {\mathcal{D}\backslash {\mathcal{D}^u}}$ represents the
-data to be retained. Let $\mathcal{M}^{r}$ denote the model before
-unlearning, $\mathcal{M}^f$ is the model after unlearning, and
-$\mathcal{FGT}$(·) denote the unlearning process. The unlearning can be
-represented as:
-
-$${\mathcal{M}^f} = {\mathcal{FGT}}({\mathcal{M}^r},\mathcal{D}^r,{\mathcal{D}^{u}}).$$
-
-The objectives of FU are threefold: (a) minimizing the performance of
-$\mathcal{M}^f$ on $\mathcal{D}^{u}$; (b) maximizing the performance on
-$\mathcal{D}^{r}$, and (c) minimizing the resources consumed by the
-unlearning process. Denoting $\mathcal{F (\cdot)}$ as the model test
-loss and $\mathcal{RC (\cdot)}$ as resource consumption, the above
-objectives can be respectively expressed as:
-{% raw %}
-$$\max {\mathcal{F}}({{\mathcal{M}}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^u},$$
-$$\min {\mathcal{F}}({\mathcal{M}^f},({x_i},{y_i})),( {x_i},{y_i} ) \in {\mathcal{D}^r =  \mathcal{D}\backslash {\mathcal{D}^u}},$$
-$$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, \mathcal{D}^r, \mathcal{D}^u)).$$
-{% endraw %}
-Ideally, when a model is considered to have fully forgotten target
-knowledge, its performance should be equivalent to that of a model
-trained from scratch without ever seeing the forgotten data
-$\mathcal{D}^{u}$. In this retraining approach, it ensures the worst
-performance on the forgotten data $\mathcal{D}^{u}$ and the best
-performance on the remaining data $\mathcal{D}^{r}$. However, this
-approach requires significant computational resources and preserving all
-historical training data, which is impractical in real-world scenarios.
-Therefore, we posit that the closer the performance of the model
-$\mathcal{M}^f$ on $\mathcal{D}^{r}$ and $\mathcal{D}^{u}$ is to that of
-a retrained model, the better the unlearning effect, while also striving
-to minimize resource expenditure on this basis.
-
-**Unlearning scenarios in FL.** In consideration of the distributed
-nature of FL, traditional machine unlearning can be extended to client
-unlearning, class unlearning, and sample unlearning. In the case of
-client unlearning, we consider $N$ clients, a set of unlearning clients
-$N_u$, with the unlearning dataset
-$\mathcal{D}^{u}= \{\mathcal{D}_k\}_{k\in{N_u}}$, and remember dataset
-$\mathcal{D}^{r}= \{\mathcal{D}_k\}_{k\in{N\backslash{N_u}}}$, where
-$\mathcal{D}_k$ represents the data of client $k$. The optimization
-objectives are:
-{% raw %}
-$$\max \sum\limits_{k \in {N_u}} {{\mathcal{F}}({\mathcal{M}^f},{\mathcal{D}_k})},$$
-$$\min \sum\limits_{k \in N\backslash {N_u}} {{\mathcal{F}}({\mathcal{M}^r},{\mathcal{D}_k})},$$
-$$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, \{\mathcal{D}_k \}_{k \in N}).$$
-{% endraw %}
-Sample unlearning means forgetting a portion of data within a client. It
-is similar to client unlearning. In the context of class unlearning, let
-all client data classes be $\mathcal{C}$ and the classes to be unlearned
-be $\mathcal{C}^u$. The unlearning dataset can be represented as
-${\mathcal{D}^u} = \{ ( {x_i^k,y_i^k = c} ) \}_{c \in {\mathcal{C}^u},( {x_i^k,y_i^k} ) \in {\mathcal{D}_k},k \in N}$,
-and the remember dataset as
-${\mathcal{D}^r} = {\{ {\mathcal{D}_k} \}_{k \in N}}\backslash {\mathcal{D}^u}$.
-The optimization objectives are:
-{% raw %}
-$$\max \sum\limits_{({x_i^{.},y_i^{.}}) \in \{ {\mathcal{D}_k} \}_{k \in N}} {\mathcal{F}({\mathcal{M}^f},{{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.} \in {\mathcal{C}^u}}})},$$
-$$\min \sum\limits_{({x_i^{.},y_i^{.}}) \in \{ {\mathcal{D}_k}\}_{k \in N} } {\mathcal{F}({\mathcal{M}^r},{{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.} \notin {\mathcal{C}^u}}})},$$
-$$\min {\mathcal{RC}}({\mathcal{FGT}}(\mathcal{M}^r, {{\left. {(x_i^{.},y_i^{.})} \right|}_{y_i^{.}\in \mathcal{C}}})).$$
-{% endraw %}
-
-
 ## Methodology
 
 FUSED involves a two-stage unlearning process (as shown in method figure).
@@ -162,7 +97,7 @@ calculation process is as follows:
 $${\cal D}iff(p_l^n,{p_l}) = \sum\nolimits_{i = 1}^k {\sum\nolimits_{j = 1}^v {\left| {p_{l,ij}^n - {p_{l,ij}}} \right|} }.
 $$
 {% endraw %}
-The aggregation method of $\oplus$ is as follows: 
+The aggregation method of $\oplus$ is as follows:
 {% raw %}
 $$\begin{array}{l}
 Diff_l^1(p_l^1,{p_l}) \oplus {\cal D}iff_l^N(p_l^N,{p_l})= \frac{{\left| {{D_1}} \right|}}{{\sum\nolimits_{n = 1}^N {\left| {{D_n}} \right|} }}\\
@@ -217,19 +152,6 @@ $$A_n^f(i,e + 1) = A_n^f(i,e) - \eta \nabla {F_n}(D_n^r,{{\cal M}_n}(i,e)),$$
 $${{\mathcal{M}}_n}(i,e + 1) = ({p_{A_n^f(i,e + 1)}} + {p_{{{\cal L}_f}}}) \circ {p_{{{\cal L}_r}}},
 $$
 {% endraw %}
-where $e = 0, \cdots E - 1$,${F_n}(D_n^r,{\mathcal{M}_n}(i,e))$ represents the loss and $\eta$
-denotes the learning rate. In each round of local training,
-$\mathcal{M}_n(i,e)$ is derived from the fusion of the original model
-$\mathcal{M}^r$ and the sparse matrix $A_n^f(i,e)$ obtained from the
-previous round. Each completed training round corresponds to a process
-of knowledge overwriting, during which the remaining knowledge is
-progressively enhanced. It is worth noting that during the training
-process, only ${p_{A_n^f(i,e)}}$ is updated. The other parameters,
-{% raw %}${p_{{{\mathcal{L}}^f}}}${% endraw %} and {% raw %}${p_{{{\mathcal{L}}^r}}}${% endraw %}, remain frozen
-and are only used to compute the loss during inference. After local
-training is completed, each client uploads ${p_{A_n^f(I, E)}}$ to the
-server, which aggregates the updates using the FedAvg method to obtain a new ${p_{A_n^f(i+1)}}$. After training, we need to concatenate the adapter with the corresponding unlearning layer of the original model to derive the global unlearning model. When the client's knowledge no longer needs to be unlearned, removing the unlearning adapters will effectively restore the original memory, thereby making the unlearning process reversible.
-
 
 ## Experiment
 

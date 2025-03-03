@@ -9,7 +9,7 @@ affiliations:
     National University of Defense Technology<sup>1</sup>, Sony<sup>2</sup>, Nanyang Technological University<sup>3</sup>
 
 code: https://github.com/Zhong-Zhengyi/FUSED-Code
-paper: https://openreview.net/forum?id=3EUHkKkzzj
+paper: https://arxiv.org/abs/2502.20709
 ---
 <!-- Using HTML to center the abstract -->
 
